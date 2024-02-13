@@ -26,14 +26,6 @@ pipeline {
             }
         }
     
-    
-       stage('sonar') {
-            steps {
-                sh "trivy fs."
-            }
-        }
-    
-    
         stage('Trivy Fs Scan') {
             steps {
                 sh "trivy fs."
@@ -74,7 +66,7 @@ pipeline {
         }
             }
             }
-        stage('Deplot to docker container') {
+        stage('Deploy to docker container') {
             steps {
                 script{
                     withDockerRegistry(credentialsID: 'docker-cred', toolName: 'docker'){
